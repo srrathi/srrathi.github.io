@@ -1,0 +1,24 @@
+.text-animation-container {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 40px;
+    width: 100%;
+    /* Adjust height as needed */
+}
+
+.text-item {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.text-item.active {
+    opacity: 1;
+    transform: translateY(0%);
+}
