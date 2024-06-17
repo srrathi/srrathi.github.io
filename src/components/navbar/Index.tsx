@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import React, { useState } from 'react'
 import { FaLinkedinIn } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { AiFillTwitterCircle } from "react-icons/ai";
+import { FaLinkedin } from "react-icons/fa";
+import ScrollComponent from './scrollComponent';
+import LinksComponent from '../common/links';
 
 const routes = [
     {
@@ -83,7 +83,9 @@ const NavbarComponent = () => {
 
                 {/* Language selector */}
                 <div className="absolute top-4 text-xl text-white right-6 z-50">
-                    IN
+                    <Link target='_blank' aria-label='Sitaram Rathi Linkedin' className='cursor-pointer hover:text-white transform ease-in-out delay-150' href={'https://www.linkedin.com/in/sitaram-rathi-519152197/'}>
+                        <FaLinkedin />
+                    </Link>
                 </div>
 
                 {/* Logo */}
@@ -101,20 +103,21 @@ const NavbarComponent = () => {
                             {
                                 routes?.map((r, i) =>
                                     <li key={i}>
-                                        <Link href={r.href} onClick={toggleMenu} target={r?.newTab ? '_blank' : ''} className='font-thin'>{r.name}</Link>
+                                        <Link href={r.href} onClick={toggleMenu} target={r?.newTab ? '_blank' : ''} className='font-thin group pb-2 relative'>
+                                            {r.name}
+                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+                                        </Link>
                                     </li>
                                 )
                             }
-                            <li className='text-3xl flex md:hidden lg:hidden items-center gap-3 text-gray-400 tracking-widest'>
-                                <FaLinkedinIn />
-                                <FaGithub />
-                                <AiFillTwitterCircle />
-                                <IoLogoWhatsapp />
+                            <li className='text-3xl tracking-widest'>
+                                <LinksComponent />
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <ScrollComponent />
         </div>
     );
 }

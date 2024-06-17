@@ -110,7 +110,7 @@ const techStack = [
     },
 ]
 
-// DNS, Bootstrap, Material UI, HTML CSS
+// DNS, Bootstrap, Material UI, HTML, CSS, Tailwind CSS
 
 const Technologies = () => {
     return (
