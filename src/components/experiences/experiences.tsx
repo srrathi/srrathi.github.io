@@ -16,7 +16,7 @@ const timelineData = [
         company: `<p>Kirana Club</p>`,
         position: "SDE Intern",
         location: "Bengaluru, Karnataka",
-        logo:'/assets/images/logos/kc-logo.png',
+        logo: '/assets/images/logos/kc-logo.png',
         description: `<p>◦ <b>Robust Website in Nextjs:</b> Developed Kirana Club new website in Nextjs with more than 30 pages from scratch, utilizing TypeScript and Tailwind CSS for SSR, achieving SEO optimization with 15k+ monthly visits.</p><br/>
         <p>◦ <b>Backend for Status Maker:</b> Enhanced Kirana Club app with ”Status Maker” feature, managing posters and categories via internal tool, integrating Cloud Functions, caching on redis and Golang CRON jobs for efficient scheduling of posters and categories visibilities to show in app.</p><br/>
         <p>◦ <b>Highly Scalable Services in Golang:</b> Engineered high-performance Golang service which connects with MySQL and Firebase for data queries, achieving 23ms minimum response time, load testing it and handling 25k+ daily invocations.</p><br/>
@@ -29,7 +29,7 @@ const timelineData = [
         company: `<p>Aalto University</p>`,
         position: "Research Assistant",
         location: "Espoo, Finland",
-        logo:'/assets/images/logos/aalto-university.png',
+        logo: '/assets/images/logos/aalto-university.png',
         description: `<p>◦ <b>Winter Navigation Database Creation:</b> This Project involves developing a program for storing ice data from
         NetCDF format into a SQL database which can be used for feeding data to winter navigation traffic simulation model
         and ongoing research in marine and arctic sciences.</p><br/>
@@ -43,7 +43,7 @@ const timelineData = [
         company: `<p>Goggle Summer of<br/>Code Rocket.Chat</p>`,
         position: "Opensource Contributor",
         location: "Remote",
-        logo:'/assets/images/logos/gsoc-rocketchat-logo.webp',
+        logo: '/assets/images/logos/gsoc-rocketchat-logo.webp',
         description: `<p>◦ <b>TUI Development:</b> Designed and developed Rocket.chat TUI using bubbletea go package and their Go SDK. Added
         various rest and realtime functionalities like message receiving and sending, slash commands, @ mention, login using
         email and auth token, listing channels.</p><br/>
@@ -56,7 +56,7 @@ const timelineData = [
         company: `<p>IIT Gandhinagar</p>`,
         position: "Research Intern",
         location: "Gandhinagar, Gujarat",
-        logo:'/assets/images/logos/iitgn_logo.webp',
+        logo: '/assets/images/logos/iitgn_logo.webp',
         description: `<p>◦ <b>Portal Development:</b> Made responsive portal for visualising and interacting with seismic waveform data. Used
         Dygraphs, React, Tailwind Css, Netlify for it’s development.</p><br/>
         <p>◦ <b>Additional Functionalities:</b> Added functionalities in graph which don’t exist in Dygraphs by adding them in the
@@ -69,7 +69,7 @@ const timelineData = [
         company: `<p>Myways</p>`,
         position: "MERN Stack Developer Intern",
         location: "Remote",
-        logo:'/assets/images/logos/myways-logo.png',
+        logo: '/assets/images/logos/myways-logo.png',
         description: `<p>◦ <b>Serverless Backend Development:</b> Worked on AWS services like CDK, EC-2, Lambda Functions, API Gateway,
         SAM, Route 53 and many more for migrating backend as serverless backend on AWS.</p><br/>
         <p>◦ <b>Developing Tools:</b> Worked on Backend of the Software, structuring backend folder and created Private npm package
@@ -82,7 +82,7 @@ const timelineData = [
         company: `<p>Advenio Technosys Pvt. Ltd.</p>`,
         position: "Frontend Engineer Intern",
         location: "Remote",
-        logo:'/assets/images/logos/advenio-logo.png',
+        logo: '/assets/images/logos/advenio-logo.png',
         description: `<p>◦ <b>Backend Maintenance:</b> Worked on the Backend made in Nodejs for monitoring and debugging API’s as well as SQL
         Database on MariaDb and deploying both frontend and backend on AWS EC-2.</p><br/>
         <p>◦ <b>Frontend Development:</b> Worked and Developed web applications using Reactjs, Redux and Material UI.</p>
@@ -94,7 +94,7 @@ const timelineData = [
         company: `<p>Requestly (YC-W22)</p>`,
         position: "SDE Intern",
         location: "Remote",
-        logo:'/assets/images/logos/requestly-logo.png',
+        logo: '/assets/images/logos/requestly-logo.png',
         description: `<p>◦ <b>Development on Web App:</b> Worked extensively on React Dashboard adding new features and fixing bugs. Using
         firebase for adding more functionality in it.</p><br/>
         <p>◦ <b>Third Party Integrations:</b> Added Google analytics in the website for capturing user events and SendInBlue for
@@ -107,7 +107,7 @@ const timelineData = [
         company: `<p>The Uplift Project by<br/>Girlscript Foundation</p>`,
         position: "Web Developer",
         location: "Remote",
-        logo:'/assets/images/logos/uplift-logo.png',
+        logo: '/assets/images/logos/uplift-logo.png',
         description: `<p>◦ <b>Website development and maintenance:</b> Single Handedly Developed and Maintained the complete website of The
         Uplift Project 2021 using HTML, CSS, JavaScript, Bootstrap and SendInBlue for emails and tracking.</p><br/>
         <p>◦ <b>Badge Generator:</b> Developed a custom badge generator to embed participant image along with The Uplift Project
@@ -157,11 +157,15 @@ const Experiences = () => {
                         timelineData?.map((data, idx) => (
                             <div key={idx} className={`mb-8 flex justify-between ${idx % 2 !== 0 ? 'md:flex-row-reverse lg:flex-row-reverse' : ''} items-center w-full right-timeline`}>
                                 <div className={`order-1 hidden md:flex items-center lg:flex justify-between w-5/12 py-4`}>
+                                    <hr className='w-full hidden md:block lg:block' />
                                     <h3 className={`tracking-wider hover:bg-white hover:text-black transition ease-in-out delay-150 flex items-center gap-2 italic border-[1px] w-fit px-6 border-white text-xl py-3 font-bold`}>
-                                        <PiBuildingOfficeFill />
-                                        <div dangerouslySetInnerHTML={{ __html: data?.company }}></div>
+                                        <div>
+                                            <PiBuildingOfficeFill size={20} />
+                                        </div>
+                                        <div className='min-w-52' dangerouslySetInnerHTML={{ __html: data?.company }}></div>
                                     </h3>
-                                    <div className={`relative object-contain w-40 h-40 ${idx % 2 === 0 ? 'order-first' : ''}`}>
+                                    <hr className='w-full hidden md:block lg:block' />
+                                    <div className={`relative object-contain min-w-40 min-h-40 w-40 h-40 ${idx % 2 === 0 ? 'order-first' : ''}`}>
                                         <img src={data?.logo} alt={data?.company} loading='lazy' className="object-contain w-full h-full" />
                                     </div>
                                 </div>

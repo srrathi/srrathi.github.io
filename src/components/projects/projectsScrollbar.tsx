@@ -1,34 +1,7 @@
 import React from 'react'
 import TagWord from '../common/tagWord'
 import CardsScrollbar from '../common/cardsScrollbar';
-
-
-const projectsData = [
-    {
-        heading: 'Hello world',
-        subHeading: 'Hello world',
-        img: 'https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg',
-        bgImg: 'bg-[url(https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg)]'
-    },
-    {
-        heading: 'Hello world',
-        subHeading: 'Hello world',
-        img: 'https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg',
-        bgImg: 'bg-[url(https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg)]'
-    },
-    {
-        heading: 'Hello world',
-        subHeading: 'Hello world',
-        img: 'https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg',
-        bgImg: 'bg-[url(https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg)]'
-    },
-    {
-        heading: 'Hello world',
-        subHeading: 'Hello world',
-        img: 'https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg',
-        bgImg: 'bg-[url(https://st4.depositphotos.com/12981370/24312/i/450/depositphotos_243120806-stock-photo-programmer-working-software-development-coding.jpg)]'
-    }
-]
+import projectsData from './data.json'
 
 
 const ProjectsScrollbar = () => {

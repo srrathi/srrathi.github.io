@@ -1,8 +1,9 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+import ProjectModal from './projectModal';
 
 interface customDotsProps {
     onMove?: boolean,
@@ -78,8 +79,8 @@ const CustomLeft: React.FC<customArrowProps> = ({ onClick }) => (
 // };
 
 interface dataCard {
-    img?: string,
-    heading?: string,
+    img?: string
+    heading?: string
     subHeading?: string
     link?: string
 }
@@ -89,6 +90,14 @@ interface cardsScrollbarProps {
 }
 
 const CardsScrollbar: React.FC<cardsScrollbarProps> = ({ data }) => {
+    const [open, setOpen] = useState(false)
+    const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+
+    const handleSelectedProject = (index: number) => {
+        setSelectedProjectIndex(index)
+        setOpen(prev => !prev)
+    }
+
     const responsive = {
         // Define responsive settings for different screen sizes
         desktop: {
@@ -119,6 +128,7 @@ const CardsScrollbar: React.FC<cardsScrollbarProps> = ({ data }) => {
                     swipeable={true}
                     arrows={true}
                     draggable={true}
+                    pauseOnHover={true}
                     showDots={true}
                     containerClass="carousel-container"
                     responsive={responsive}
@@ -129,8 +139,11 @@ const CardsScrollbar: React.FC<cardsScrollbarProps> = ({ data }) => {
                 >
                     {
                         data?.map((project, index) =>
-                            <div key={index} className="p-2">
-                                <div style={{ background: `url(${project?.img})`, backgroundRepeat: "none", backgroundSize: "cover", backgroundPosition: "center" }} className={`max-w-full cursor-pointer px-1 bg-cover bg-center bg-no-repeat w-full p-4 text-center min-h-[17rem] md:min-h-[24rem] lg:min-h-[24rem]`}>
+                            <div key={index} className="p-2 backdrop-blur-md">
+                                <div
+                                    onClick={() => handleSelectedProject(index)}
+                                    style={{ background: `url(${project?.img})`, backgroundRepeat: "none", backgroundSize: "cover", backgroundPosition: "center" }}
+                                    className={`max-w-full cursor-pointer px-1 bg-cover bg-center bg-no-repeat w-full p-4 text-center min-h-[17rem] md:min-h-[24rem] lg:min-h-[24rem]`}>
                                     <div className="flex justify-center md:justify-end lg:justify-end w-full items-end min-h-full h-full">
                                         <div className='text-2xl font-bold md:text-[40px]/[60px] lg:text-[40px]/[60px]' >
                                             <h1 style={{ textShadow: "3px 3px 17px rgba(0, 0, 0, 1)" }} className='text-white'>{project?.heading}</h1>
@@ -140,10 +153,10 @@ const CardsScrollbar: React.FC<cardsScrollbarProps> = ({ data }) => {
                                 </div>
                             </div>
                         )
-
                     }
                 </Carousel>
             </div>
+            <ProjectModal open={open} setOpen={setOpen} activeIndex={selectedProjectIndex} />
         </div>
     )
 }

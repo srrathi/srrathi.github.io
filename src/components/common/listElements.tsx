@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 
 interface ListElementsProps {
     title?: string
-    items?: ReactElement[]
+    items?: ReactElement[] | string[]
 }
 const ListElements: React.FC<ListElementsProps> = ({ title, items }) => {
     return (
