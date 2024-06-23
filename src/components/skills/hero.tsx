@@ -17,7 +17,7 @@ const items = [
 
 const SkillsHero = () => {
     return (
-        <div className='h-full w-full min-h-screen '>
+        <section id="about" className='h-full w-full min-h-screen '>
             <div className="pt-2 md:pt-14 lg:pt-14">
                 <TagWord text='Skills' />
                 <div className="mt-0 md:mt-5 lg:mt-5">
@@ -33,7 +33,7 @@ const SkillsHero = () => {
                     <Advantages />
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import React, { useState } from 'react'
-import { FaLinkedinIn } from "react-icons/fa";
+import { GrDocumentDownload } from "react-icons/gr";
 import { FaLinkedin } from "react-icons/fa";
 import ScrollComponent from './scrollComponent';
 import LinksComponent from '../common/links';
@@ -14,22 +14,22 @@ const routes = [
     },
     {
         name: "ABOUT",
-        href: "/about",
-        newTab: false,
-    },
-    {
-        name: "EXPERIENCES",
-        href: "/experiences",
+        href: "#about",
         newTab: false,
     },
     {
         name: "PROJECTS",
-        href: "/projects",
+        href: "#projects",
+        newTab: false,
+    },
+    {
+        name: "EXPERIENCES",
+        href: "#experiences",
         newTab: false,
     },
     {
         name: "CONTACT",
-        href: "/contact",
+        href: "#contact",
         newTab: false,
     },
     {
@@ -82,10 +82,18 @@ const NavbarComponent = () => {
                 </button>
 
                 {/* Language selector */}
-                <div className="absolute top-4 text-xl text-white right-6 z-50">
-                    <Link target='_blank' aria-label='Sitaram Rathi Linkedin' className='cursor-pointer hover:text-white transform ease-in-out delay-150' href={'https://www.linkedin.com/in/sitaram-rathi-519152197/'}>
-                        <FaLinkedin />
+                <div className="absolute top-4 text-xl group text-white right-6 z-50">
+                    <Link target='_blank' aria-label='Sitaram Rathi Resume'
+                        className='cursor-pointer flex items-center gap-2 hover:text-white transform ease-in-out delay-150'
+                        href={'https://drive.google.com/drive/folders/1AtCmiBnyegoQf2InpaHGz4Ufc0xb8Bsb'}>
+                        <div>
+                            <GrDocumentDownload size={15} />
+                        </div>
+                        <span className='text-lg'>
+                            RESUME
+                        </span>
                     </Link>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
                 </div>
 
                 {/* Logo */}
