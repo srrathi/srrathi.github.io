@@ -40,7 +40,7 @@ const timelineData = [
     {
         start: "May 2022",
         end: "Nov 2022",
-        company: `<p>Goggle Summer of<br/>Code Rocket.Chat</p>`,
+        company: `<p>Goggle Summer of Code Rocket.Chat</p>`,
         position: "Opensource Contributor",
         location: "Remote",
         logo: '/assets/images/logos/gsoc-rocketchat-logo.webp',
@@ -162,7 +162,7 @@ const Experiences = () => {
                                         <div>
                                             <PiBuildingOfficeFill size={20} />
                                         </div>
-                                        <div className='min-w-52' dangerouslySetInnerHTML={{ __html: data?.company }}></div>
+                                        <div className='min-w-52 text-white hover:bg-white hover:text-black' dangerouslySetInnerHTML={{ __html: data?.company }}></div>
                                     </h3>
                                     <hr className='w-full hidden md:block lg:block' />
                                     <div className={`relative object-contain min-w-40 min-h-40 w-40 h-40 ${idx % 2 === 0 ? 'order-first' : ''}`}>

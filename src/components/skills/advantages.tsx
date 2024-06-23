@@ -89,14 +89,14 @@ const Advantages = () => {
                 dotListClass="mt-[80px]"
             >
                 {carouselItems.map((item, idx) => (
-                    <div className='min-w-[20rem] cursor-grab max-w-[28rem] p-4 border-2 text-center min-h-[17rem] border-white' key={idx}>
-                        <div className="w-full text-3xl py-3 mx-auto flex justify-center text-center">
+                    <div className='min-w-[20rem] cursor-grab text-white max-w-[28rem] p-4 border-2 text-center min-h-[17rem] border-white' key={idx}>
+                        <div className="w-full first-line: text-3xl py-3 mx-auto flex justify-center text-center">
                             <item.icon />
                         </div>
-                        <h3 className="text-center tracking-wider text-xl py-3 font-bold">
+                        <h3 className="text-center text-white tracking-wider text-xl py-3 font-bold">
                             {item?.title}
                         </h3>
-                        <p className="text-center tracking-wider text-lg py-3">
+                        <p className="text-center text-white tracking-wider text-lg py-3">
                             {item?.content}
                         </p>
                     </div>
