@@ -71,7 +71,7 @@ const Advantages = () => {
     return (
         <div className='pt-14 scroll-smooth md:pt-20 lg:pt-20'>
             <div className="py-10">
-                <TagWord text='Advantages' />
+                <TagWord text='Strengths' />
             </div>
             <Carousel
                 ssr={true}

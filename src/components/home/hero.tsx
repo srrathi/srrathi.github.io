@@ -51,7 +51,7 @@ const Hero = () => {
                                 </h1>
                             </div>
                         </div>
-                        <ButtonElement type='button' text='CONTACT ME' />
+                        <ButtonElement href='#contact-us' text='CONTACT ME' />
                     </div>
                 </div>
             </div>

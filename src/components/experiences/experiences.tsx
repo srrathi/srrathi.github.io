@@ -159,7 +159,7 @@ const Experiences = () => {
                                 <div className={`order-1 hidden md:flex items-center lg:flex justify-between w-5/12 py-4`}>
                                     <hr className='w-full hidden md:block lg:block' />
                                     <h3 className={`tracking-wider hover:bg-white hover:text-black transition ease-in-out delay-150 flex items-center gap-2 italic border-[1px] w-fit px-6 border-white text-xl py-3 font-bold`}>
-                                        <div>
+                                        <div className='min-w-5'>
                                             <PiBuildingOfficeFill size={20} />
                                         </div>
                                         <div className='min-w-52 text-white hover:bg-white hover:text-black' dangerouslySetInnerHTML={{ __html: data?.company }}></div>
@@ -175,19 +175,23 @@ const Experiences = () => {
                                     <hr className='w-full' />
                                 </div>
                                 <div className="order-1 text-white border-[1px] border-white w-10/12 md:w-5/12 lg:w-5/12 px-6 py-4">
-                                    <div className="flex w-full border-b-2 border-white justify-between items-center">
+                                    <div className="block md:flex lg:flex w-full border-b-2 border-white justify-between items-center">
                                         <h3 className="tracking-wider text-lg md:text-xl lg:text-xl py-3 font-bold">
                                             {data?.position}
                                         </h3>
-                                        <div className="text-sm md:text-[1rem]/[1.25rem] max-w-16 md:max-w-full lg:max-w-full lg:text-[1rem]/[1.25rem] font-thin">{`${data?.start} - ${data?.end}`}</div>
+                                        <p className="text-sm md:text-[1rem]/[1.25rem] mb-2 md:mb-0 lg:mb-0 max-w-full lg:text-[1rem]/[1.25rem] font-thin">{`${data?.start} - ${data?.end}`}</p>
                                     </div>
-                                    <p className="tracking-wider gap-1 flex items-center italic text-md md:hidden lg:hidden pt-4">
-                                        <div>at</div> <PiBuildingOfficeFill /> <div dangerouslySetInnerHTML={{ __html: data?.company }} className="font-bold underline"></div>
-                                    </p>
+                                    <div className="tracking-wider w-full gap-1 flex items-center italic text-md md:hidden lg:hidden pt-4">
+                                        <p>at</p>
+                                        <p className="min-w-3 mr-1">
+                                            <PiBuildingOfficeFill />
+                                        </p>
+                                        <div dangerouslySetInnerHTML={{ __html: data?.company }} className="font-bold underline"></div>
+                                    </div>
 
-                                    <p dangerouslySetInnerHTML={{ __html: data?.description }} className="tracking-wider text-md md:text-lg lg:text-lg pt-4 pb-3">
+                                    <div dangerouslySetInnerHTML={{ __html: data?.description }} className="tracking-wider text-md md:text-lg lg:text-lg pt-4 pb-3">
 
-                                    </p>
+                                    </div>
 
                                     <div className="text-md justify-start md:justify-end lg:justify-end items-center flex gap-2 pb-3">
                                         <FaLocationDot />
@@ -200,7 +204,6 @@ const Experiences = () => {
                         ))
                     }
 
-                    <div className='h-[20vh]'></div>
                 </div>
             </div>
         </section>
