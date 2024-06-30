@@ -29,7 +29,7 @@ const routes = [
     },
     {
         name: "CONTACT",
-        href: "#contact-us",
+        href: "#contact",
         newTab: false,
     },
     {

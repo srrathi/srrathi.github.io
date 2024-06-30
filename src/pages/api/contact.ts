@@ -16,7 +16,7 @@ const contactSchema = object({
 });
 
 // Create a handler function for the API route
-const handler = async (req, res) => {
+const handler = async (req: any, res: any) => {
     // Apply security headers
     // res.headers.set('Content-Security-Policy', "default-src 'self'");
     // res.headers.set('X-Content-Type-Options', 'nosniff');
@@ -50,7 +50,7 @@ const handler = async (req, res) => {
             //     console.log(resp);
             //     return NextResponse.json({ message: 'Contact form submitted successfully' });
             // }
-            const sendEmailTo = [process.env.NEXT_PUBLIC_PERSONAL_EMAIL, email].join(',');
+            const sendEmailTo = [process.env.PERSONAL_EMAIL, email].join(',');
             const resp = await sendEmail(sendEmailTo, emailSubject, message, generateEmailHTML(name, email, message));
             if (resp) {
                 // Send a success response
