@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { object, string } from 'yup';
 import rateLimit from '../../utils/rateLimiter';
-import { insertContact } from '@/utils/db';
 import sendEmail from '@/lib/email';
 import { emailSubject, generateEmailHTML } from '@/utils/emailUtils';
 
