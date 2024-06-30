@@ -28,6 +28,13 @@ body {
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
+.root-background {
+  background-color: #000000;
+  opacity: 1;
+  background-image:  linear-gradient(#0c0c0c 2.6px, transparent 2.6px), linear-gradient(to right, #0c0c0c 2.6px, #000000 2.6px);
+  background-size: 52px 52px;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

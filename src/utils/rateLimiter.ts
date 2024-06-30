@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 const rateLimit = (limit: number, windowMs: number) => {
     const requests: { [key: string]: number[] } = {};
 
-    return (req) => {
+    return (req: any) => {
         const ip = req.headers['x-forwarded-for'] || req.headers['remoteAddress'] || '127.0.0.1';
         const now = Date.now();
 

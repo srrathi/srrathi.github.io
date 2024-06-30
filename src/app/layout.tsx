@@ -45,9 +45,9 @@ export default function RootLayout({
         <GoogleTagManager gtmId="G-TCXDYQHMH5" />
       </head>
       <body className={inter.className}>
-        <div className="bg-black w-full h-full">
+        <div className="root-background w-full h-full">
           <NavbarComponent />
-          <div className='mx-auto max-w-[1536px]'>
+          <div className='mx-auto bg-black max-w-[1536px]'>
             {children}
           </div>
           <FooterComponent />
