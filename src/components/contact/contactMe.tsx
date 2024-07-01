@@ -16,7 +16,7 @@ const ContactMe = () => {
           <div className="col-span-12 md:col-span-6 lg:col-span-6">
             <div className="pt-5 tracking-wider">
               <p className='text-lg md:text-2xl lg:text-2xl text-white'>
-                Have a project in mind? Feel free to reach out to me. Just give me a message whenever and however you want.
+                Have a project or opportunity in mind? Feel free to reach out to me. Just give me a message whenever and however you want.
                 I will get back to you as soon as possible.
               </p>
 

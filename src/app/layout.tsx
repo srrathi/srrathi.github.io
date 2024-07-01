@@ -4,6 +4,7 @@ import './globals.css'
 import NavbarComponent from '@/components/navbar/Index'
 import FooterComponent from '@/components/footer/footer'
 import { GoogleTagManager } from '@next/third-parties/google'
+import LoaderComponent from '@/components/loader'
 
 const inter = Ubuntu({ weight: "300", subsets: ['latin'], display: 'swap', adjustFontFallback: false })
 
@@ -46,6 +47,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div className="root-background w-full h-full">
+          <LoaderComponent />
           <NavbarComponent />
           <div className='mx-auto bg-black max-w-[1536px]'>
             {children}
