@@ -5,6 +5,7 @@ import NavbarComponent from '@/components/navbar/Index'
 import FooterComponent from '@/components/footer/footer'
 import { GoogleTagManager } from '@next/third-parties/google'
 import LoaderComponent from '@/components/loader'
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Ubuntu({ weight: "300", subsets: ['latin'], display: 'swap', adjustFontFallback: false })
 
@@ -46,6 +47,7 @@ export default function RootLayout({
         <GoogleTagManager gtmId="G-TCXDYQHMH5" />
       </head>
       <body className={inter.className}>
+        <Analytics />
         <div className="root-background w-full h-full">
           <LoaderComponent />
           <NavbarComponent />
