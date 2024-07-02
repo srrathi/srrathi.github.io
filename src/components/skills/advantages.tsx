@@ -77,10 +77,11 @@ const Advantages = () => {
                 ssr={true}
                 infinite
                 autoPlay={true}
-                autoPlaySpeed={3000}
-                transitionDuration={1000}
+                autoPlaySpeed={10000}
+                transitionDuration={3000}
                 swipeable={true}
                 draggable={true}
+                pauseOnHover={true}
                 arrows={false}
                 showDots={false}
                 containerClass="carousel-container"

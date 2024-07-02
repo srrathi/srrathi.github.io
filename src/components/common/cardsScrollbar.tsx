@@ -145,7 +145,7 @@ const CardsScrollbar: React.FC<cardsScrollbarProps> = ({ data }) => {
                                     style={{ background: `url(${project?.img})`, backgroundRepeat: "none", backgroundSize: "cover", backgroundPosition: "center" }}
                                     className={`max-w-full cursor-pointer px-1 bg-cover bg-center bg-no-repeat w-full p-4 text-center min-h-[17rem] md:min-h-[24rem] lg:min-h-[24rem]`}>
                                     <div className="flex justify-center md:justify-end lg:justify-end w-full items-end min-h-full h-full">
-                                        <div className='text-2xl font-bold md:text-[40px]/[60px] lg:text-[40px]/[60px]' >
+                                        <div className='text-2xl bg-black p-2 font-bold md:text-[40px]/[60px] lg:text-[40px]/[60px]' >
                                             <h1 style={{ textShadow: "3px 3px 17px rgba(0, 0, 0, 1)" }} className='text-white'>{project?.heading}</h1>
                                             <h1 style={{ textShadow: "3px 3px 17px rgba(0, 0, 0, 1)" }} className='text-purple-300'>{project?.subHeading}</h1>
                                         </div>
