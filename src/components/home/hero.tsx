@@ -8,8 +8,8 @@ import ButtonElement from '../common/button'
 const Hero = () => {
     return (
         <div className='h-full w-full'>
-            <div className="overflow-hidden">
-                <div className="grid grid-cols-12 my-auto min-h-screen items-center">
+            <div className="overflow-hidden min-h-[100vh] min-w-[100%]">
+                <div className="grid max-w-[1400px] w-full fixed bg-fixed grid-cols-12 my-auto min-h-screen items-center">
                     <div className="col-span-12 md:col-span-5 lg:col-span-5">
                         <OrbAnimation />
                     </div>

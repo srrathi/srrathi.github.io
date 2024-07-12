@@ -9,10 +9,12 @@ const HomeComponent = () => {
     return (
         <div className='px-4'>
             <Hero />
-            <SkillsHero />
-            <ProjectsComponent />
-            <ExperiencesComponent />
-            <ContactComponent />
+            <div className="bg-black relative z-[100]">
+                <SkillsHero />
+                <ProjectsComponent />
+                <ExperiencesComponent />
+                <ContactComponent />
+            </div>
         </div>
     )
 }
