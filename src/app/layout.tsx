@@ -6,6 +6,7 @@ import FooterComponent from '@/components/footer/footer'
 import { GoogleTagManager } from '@next/third-parties/google'
 import LoaderComponent from '@/components/loader'
 import { Analytics } from "@vercel/analytics/react"
+import Script from 'next/script'
 
 const inter = Ubuntu({ weight: "300", subsets: ['latin'], display: 'swap', adjustFontFallback: false })
 
@@ -45,6 +46,25 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous' />
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
         <GoogleTagManager gtmId="G-TCXDYQHMH5" />
+
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        ></Script>
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: ` 
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}',{
+          page_path: window.location.pathname,
+            });
+        `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <Analytics />
