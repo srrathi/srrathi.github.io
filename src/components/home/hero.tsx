@@ -4,6 +4,7 @@ import './hero.css'
 import TagWord from '../common/tagWord'
 import TextAnimation from '../common/textAnimation'
 import ButtonElement from '../common/button'
+import AboutComponent from './about'
 
 const Hero = () => {
     return (
@@ -53,6 +54,10 @@ const Hero = () => {
                         </div>
                         <ButtonElement href='#contact' text='CONTACT ME' />
                     </div>
+                </div>
+
+                <div className="pt-20 pb-10 min-h-screen">
+                    <AboutComponent />
                 </div>
             </div>
         </div>

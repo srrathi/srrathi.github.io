@@ -18,6 +18,11 @@ const routes = [
         newTab: false,
     },
     {
+        name: "SKILLS",
+        href: "#skills",
+        newTab: false,
+    },
+    {
         name: "PROJECTS",
         href: "#projects",
         newTab: false,

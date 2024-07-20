@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://imrathi.vercel.app"),
   title: "Sitaram Rathi | Software/Fullstack/Backend Developer",
   description:
-    "I’m Sitaram Rathi, a Full Stack Developer 👨‍💻. I expertise in creating frontend and backend web applications using React, Nodejs, Golang, AWS, Firebase, Serverless, Cloud Functions, Pub/Sub, Express, Mongodb, MySQL, Nextjs, Typescript. I also have experience with deploying and hosting scalable applications and services. I'm looking for FT roles in Software Development.",
+    "I’m Sitaram Rathi, a Full Stack Developer from Bengaluru. I expertise in creating frontend and backend web applications using React, Nodejs, Golang, AWS, Firebase, Serverless, Cloud Functions, Pub/Sub, Express, Mongodb, MySQL, Nextjs, Typescript. I also have experience with deploying and hosting scalable applications and services. I'm looking for FT roles in Software Development.",
   robots: 'index, follow',
   openGraph: {
     title: "Sitaram Rathi | Software/Fullstack/Backend Developer",
     description:
-      "I’m Sitaram Rathi, a Full Stack Developer 👨‍💻. I expertise in creating frontend and backend web applications using React, Nodejs, Golang, AWS, Firebase, Serverless, Cloud Functions, Pub/Sub, Express, Mongodb, MySQL, Nextjs, Typescript. I also have experience with deploying and hosting scalable applications and services. I'm looking for FT roles in Software Development.",
+      "I’m Sitaram Rathi, a Full Stack Developer from Bengaluru. I expertise in creating frontend and backend web applications using React, Nodejs, Golang, AWS, Firebase, Serverless, Cloud Functions, Pub/Sub, Express, Mongodb, MySQL, Nextjs, Typescript. I also have experience with deploying and hosting scalable applications and services. I'm looking for FT roles in Software Development.",
     images: '/SR.webp',
     siteName: "Sitaram Rathi | Software/Fullstack/Backend Developer"
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "Sitaram Rathi | Software/Fullstack/Backend Developer",
     description:
-      "I’m Sitaram Rathi, a Full Stack Developer 👨‍💻. I expertise in creating frontend and backend web applications using React, Nodejs, Golang, AWS, Firebase, Serverless, Cloud Functions, Pub/Sub, Express, Mongodb, MySQL, Nextjs, Typescript. I also have experience with deploying and hosting scalable applications and services. I'm looking for FT roles in Software Development.",
+      "I’m Sitaram Rathi, a Full Stack Developer from Bengaluru. I expertise in creating frontend and backend web applications using React, Nodejs, Golang, AWS, Firebase, Serverless, Cloud Functions, Pub/Sub, Express, Mongodb, MySQL, Nextjs, Typescript. I also have experience with deploying and hosting scalable applications and services. I'm looking for FT roles in Software Development.",
     images: '/SR.webp',
     site: "Sitaram Rathi | Software/Fullstack/Backend Developer"
   }

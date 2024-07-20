@@ -137,3 +137,62 @@
         transform: translate3d(0, -25%, 0);
     }
 }
+
+
+/* about section css */
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #000000 50%, #c7c7c7 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+.about_img {
+    --a: 1deg;
+    /* control the angle of rotation (the smaller, the better) */
+    aspect-ratio: 1;
+    transform: perspective(400px) rotate3d(var(--r, 1, -1), 0, calc(var(--i, 1)*var(--a)));
+    -webkit-mask:
+        linear-gradient(135deg, #000c 40%, #000, #000c 60%) 100% 100%/250% 250%;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.alt {
+    --r: 1, 1;
+    -webkit-mask:
+        linear-gradient(45deg, #000c 40%, #000, #000c 60%) 0 100%/250% 250%;
+}
+
+.about_img:hover {
+    --i: -1;
+    -webkit-mask-position: 0 0;
+}
+
+.alt:hover {
+    -webkit-mask-position: 100% 0;
+}
