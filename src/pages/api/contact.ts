@@ -3,6 +3,7 @@ import { object, string } from 'yup';
 import rateLimit from '../../utils/rateLimiter';
 import sendEmail from '@/lib/email';
 import { emailSubject, generateEmailHTML } from '@/utils/emailUtils';
+import axios from 'axios';
 
 // Initialize rate limiter
 const limiter = rateLimit(10, 15 * 60 * 1000); // 100 requests per 15 minutes
@@ -33,32 +34,52 @@ const handler = async (req: any, res: any) => {
             // Parse the request body
             // const body = await req.json();
             const body = req.body;
+            const secretKey = process?.env?.RECAPTCHA_SECRET_KEY;
 
             // Validate the request body
             await contactSchema.validate(body, { abortEarly: false });
 
             // Destructure the request body
-            const { name, email, message } = body;
+            const { name, email, message, gReCaptchaToken } = body;
 
             // Process the contact form submission (e.g., send an email)
             // Placeholder logic for processing the data
-            const timestamp = new Date().getTime();
+            const formData = `secret=${secretKey}&response=${gReCaptchaToken}`;
             // const resp = await insertContact({ name, email, message, timestamp });
             // if (resp) {
             //     // Send a success response
             //     console.log(resp);
             //     return NextResponse.json({ message: 'Contact form submitted successfully' });
             // }
-            const sendEmailTo = [process.env.PERSONAL_EMAIL, email].join(',');
-            const resp = await sendEmail(sendEmailTo, emailSubject, message, generateEmailHTML(name, email, message));
-            if (resp) {
-                // Send a success response
-                // return NextResponse.json({ message: 'Contact form submitted successfully' });
-                return res.status(200).json({ message: 'Contact form submitted successfully' });
+            try {
+                res = await axios.post(
+                    "https://www.google.com/recaptcha/api/siteverify",
+                    formData,
+                    {
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                    }
+                );
+            } catch (e) {
+                console.log("recaptcha error:", e);
+            }
+            if (res && res.data?.success && res.data?.score > 0.5) {
+                const sendEmailTo = [process.env.PERSONAL_EMAIL, email].join(',');
+                const resp = await sendEmail(sendEmailTo, emailSubject, message, generateEmailHTML(name, email, message));
+                if (resp) {
+                    // Send a success response
+                    // return NextResponse.json({ message: 'Contact form submitted successfully' });
+                    return res.status(200).json({ message: 'Contact form submitted successfully' });
+                }
+
+                // return NextResponse.json({ message: 'Failed to submit contact form' }, { status: 500 });
+                return res.status(500).json({ message: 'Failed to submit contact form' });
+            } else {
+                console.log("fail: res.data?.score:", res.data?.score);
+                return res.status(400).json({ message: 'recatcha verification score failed', score: res.data?.score });
             }
 
-            // return NextResponse.json({ message: 'Failed to submit contact form' }, { status: 500 });
-            return res.status(500).json({ message: 'Failed to submit contact form' });
         } catch (error) {
             // Handle validation errors
             if (error instanceof Error) {
