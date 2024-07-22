@@ -6,7 +6,6 @@ import SpinnerComponent from '../common/spinner';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import GoogleCaptchaWrapper from '../common/google-captcha-wrapper';
 
 const contactFormSchema = Yup.object({
     name: Yup.string().required('Name is required').min(3, 'Name is too short').max(50, 'Name is too long'),
@@ -83,59 +82,57 @@ const ContactForm = () => {
     }
 
     return (
-        <GoogleCaptchaWrapper>
-            <div className="pt-5 tracking-wider">
-                <Formik
-                    initialValues={{ name: '', email: '', message: '' }}
-                    validationSchema={contactFormSchema}
-                    onSubmit={(values, { setSubmitting, setValues }) => {
-                        handleFormSubmitWithCaptcha(values, setSubmitting, setValues)
-                    }}
-                    validate={(e) => {
-                        if (Object.values(e).some((v) => v === '')) {
-                            setButtonDisabled(true)
-                        } else {
-                            setButtonDisabled(false)
-                        }
-                    }}
-                >
-                    {(props) => (
-                        <Form>
-                            <div className="mb-3">
-                                <Field type="text" name="name" placeholder="Name" className="w-full p-3 bg-transparent border-b-2 border-b-gray-400 text-white focus:outline-none focus:border-white" />
-                                <ErrorMessage name="name" component="div" className="text-red-500 mt-2" />
-                            </div>
-                            <div className="mb-3">
-                                <Field type="email" name="email" placeholder="Email" className="w-full p-3 bg-transparent border-b-2 border-b-gray-400 text-white focus:outline-none focus:border-white" />
-                                <ErrorMessage name="email" component="div" className="text-red-500 mt-2" />
-                            </div>
-                            <div className="mb-3">
-                                <Field as="textarea" name="message" rows={5} placeholder="Your Message" className="w-full p-3 bg-transparent border-b-2 border-b-gray-400 text-white focus:outline-none focus:border-white" />
-                                <ErrorMessage name="message" component="div" className="text-red-500 mt-2" />
-                            </div>
-                            <div className="flex justify-center md:justify-end lg:justify-end">
-                                <button disabled={Object.keys(props.errors ?? {}).length > 0 || buttonDisabled} type="submit" className={`px-6 py-2 ${Object.keys(props.errors ?? {}).length > 0 || buttonDisabled ? 'cursor-not-allowed text-gray-400 border-gray-400' : 'cursor-pointer text-white border-white'} tracking-wider border-2 flex items-center hover:bg-white hover:text-black transition ease-in-out delay-150 mt-4 md:mt-8 lg:mt-8 text-lg text-center md:text-2xl lg:text-2xl`}>
-                                    Send Message {props.isSubmitting && <SpinnerComponent />}
-                                </button>
-                                {props.isValid}
-                            </div>
-                        </Form>
-                    )}
-                </Formik>
-                <ToastContainer
-                    position="bottom-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="dark"
-                />
-            </div>
-        </GoogleCaptchaWrapper>
+        <div className="pt-5 tracking-wider">
+            <Formik
+                initialValues={{ name: '', email: '', message: '' }}
+                validationSchema={contactFormSchema}
+                onSubmit={(values, { setSubmitting, setValues }) => {
+                    handleFormSubmitWithCaptcha(values, setSubmitting, setValues)
+                }}
+                validate={(e) => {
+                    if (Object.values(e).some((v) => v === '')) {
+                        setButtonDisabled(true)
+                    } else {
+                        setButtonDisabled(false)
+                    }
+                }}
+            >
+                {(props) => (
+                    <Form>
+                        <div className="mb-3">
+                            <Field type="text" name="name" placeholder="Name" className="w-full p-3 bg-transparent border-b-2 border-b-gray-400 text-white focus:outline-none focus:border-white" />
+                            <ErrorMessage name="name" component="div" className="text-red-500 mt-2" />
+                        </div>
+                        <div className="mb-3">
+                            <Field type="email" name="email" placeholder="Email" className="w-full p-3 bg-transparent border-b-2 border-b-gray-400 text-white focus:outline-none focus:border-white" />
+                            <ErrorMessage name="email" component="div" className="text-red-500 mt-2" />
+                        </div>
+                        <div className="mb-3">
+                            <Field as="textarea" name="message" rows={5} placeholder="Your Message" className="w-full p-3 bg-transparent border-b-2 border-b-gray-400 text-white focus:outline-none focus:border-white" />
+                            <ErrorMessage name="message" component="div" className="text-red-500 mt-2" />
+                        </div>
+                        <div className="flex justify-center md:justify-end lg:justify-end">
+                            <button disabled={Object.keys(props.errors ?? {}).length > 0 || buttonDisabled} type="submit" className={`px-6 py-2 ${Object.keys(props.errors ?? {}).length > 0 || buttonDisabled ? 'cursor-not-allowed text-gray-400 border-gray-400' : 'cursor-pointer text-white border-white'} tracking-wider border-2 flex items-center hover:bg-white hover:text-black transition ease-in-out delay-150 mt-4 md:mt-8 lg:mt-8 text-lg text-center md:text-2xl lg:text-2xl`}>
+                                Send Message {props.isSubmitting && <SpinnerComponent />}
+                            </button>
+                            {props.isValid}
+                        </div>
+                    </Form>
+                )}
+            </Formik>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
+        </div>
     )
 }
 
