@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { MdLocalPhone } from "react-icons/md";
 import { IoMailSharp } from "react-icons/io5";
 import ContactForm from './contactForm';
+import GoogleCaptchaWrapper from '../common/google-captcha-wrapper';
 
 const ContactMe = () => {
   return (
@@ -48,7 +49,9 @@ const ContactMe = () => {
           </div>
 
           <div className="col-span-12 md:col-span-6 lg:col-span-6">
-            <ContactForm />
+            <GoogleCaptchaWrapper >
+              <ContactForm />
+            </GoogleCaptchaWrapper>
           </div>
         </div>
       </div>

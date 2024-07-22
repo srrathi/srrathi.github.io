@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import SpinnerComponent from '../common/spinner';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const contactFormSchema = Yup.object({
     name: Yup.string().required('Name is required').min(3, 'Name is too short').max(50, 'Name is too long'),
@@ -14,14 +15,35 @@ const contactFormSchema = Yup.object({
 
 const ContactForm = () => {
     const [buttonDisabled, setButtonDisabled] = useState(true);
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
-    const handleFormSubmit = async (values: any, setSubmitting: any, setValues: any) => {
+    const handleFormSubmitWithCaptcha = async (values: any, setSubmitting: any, setValues: any) => {
+        if (!executeRecaptcha) {
+            console.log("Execute recaptcha not available yet");
+            toast.error("Execute recaptcha not available yet", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            return;
+        }
+        executeRecaptcha("enquiryFormSubmit").then((gReCaptchaToken) => {
+            handleFormSubmit(values, setSubmitting, setValues, gReCaptchaToken);
+        });
+    }
+
+    const handleFormSubmit = async (values: any, setSubmitting: any, setValues: any, gReCaptchaToken: string) => {
         setButtonDisabled(true);
         try {
             const options = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: values.name, email: values.email, message: values.message })
+                body: JSON.stringify({ name: values.name, email: values.email, message: values.message, gReCaptchaToken })
             }
             const resp = await fetch('/api/contact', options);
             const data = await resp.json();
@@ -65,7 +87,7 @@ const ContactForm = () => {
                 initialValues={{ name: '', email: '', message: '' }}
                 validationSchema={contactFormSchema}
                 onSubmit={(values, { setSubmitting, setValues }) => {
-                    handleFormSubmit(values, setSubmitting, setValues)
+                    handleFormSubmitWithCaptcha(values, setSubmitting, setValues)
                 }}
                 validate={(e) => {
                     if (Object.values(e).some((v) => v === '')) {
@@ -91,7 +113,7 @@ const ContactForm = () => {
                         </div>
                         <div className="flex justify-center md:justify-end lg:justify-end">
                             <button disabled={Object.keys(props.errors ?? {}).length > 0 || buttonDisabled} type="submit" className={`px-6 py-2 ${Object.keys(props.errors ?? {}).length > 0 || buttonDisabled ? 'cursor-not-allowed text-gray-400 border-gray-400' : 'cursor-pointer text-white border-white'} tracking-wider border-2 flex items-center hover:bg-white hover:text-black transition ease-in-out delay-150 mt-4 md:mt-8 lg:mt-8 text-lg text-center md:text-2xl lg:text-2xl`}>
-                                Send Message {props.isSubmitting && <SpinnerComponent />}
+                                Send Message {props.isSubmitting && <div className='ml-2'><SpinnerComponent /></div>}
                             </button>
                             {props.isValid}
                         </div>
