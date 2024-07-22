@@ -113,7 +113,7 @@ const ContactForm = () => {
                         </div>
                         <div className="flex justify-center md:justify-end lg:justify-end">
                             <button disabled={Object.keys(props.errors ?? {}).length > 0 || buttonDisabled} type="submit" className={`px-6 py-2 ${Object.keys(props.errors ?? {}).length > 0 || buttonDisabled ? 'cursor-not-allowed text-gray-400 border-gray-400' : 'cursor-pointer text-white border-white'} tracking-wider border-2 flex items-center hover:bg-white hover:text-black transition ease-in-out delay-150 mt-4 md:mt-8 lg:mt-8 text-lg text-center md:text-2xl lg:text-2xl`}>
-                                Send Message {props.isSubmitting && <SpinnerComponent />}
+                                Send Message {props.isSubmitting && <div className='ml-2'><SpinnerComponent /></div>}
                             </button>
                             {props.isValid}
                         </div>
