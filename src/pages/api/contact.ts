@@ -51,8 +51,9 @@ const handler = async (req: any, res: any) => {
             //     console.log(resp);
             //     return NextResponse.json({ message: 'Contact form submitted successfully' });
             // }
+            let gResp;
             try {
-                res = await axios.post(
+                gResp = await axios.post(
                     "https://www.google.com/recaptcha/api/siteverify",
                     formData,
                     {
@@ -64,7 +65,7 @@ const handler = async (req: any, res: any) => {
             } catch (e) {
                 console.log("recaptcha error:", e);
             }
-            if (res && res.data?.success && res.data?.score > 0.5) {
+            if (gResp && gResp?.data?.success && gResp?.data?.score > 0.5) {
                 const sendEmailTo = [process.env.PERSONAL_EMAIL, email].join(',');
                 const resp = await sendEmail(sendEmailTo, emailSubject, message, generateEmailHTML(name, email, message));
                 if (resp) {
@@ -76,8 +77,8 @@ const handler = async (req: any, res: any) => {
                 // return NextResponse.json({ message: 'Failed to submit contact form' }, { status: 500 });
                 return res.status(500).json({ message: 'Failed to submit contact form' });
             } else {
-                console.log("fail: res.data?.score:", res.data?.score);
-                return res.status(400).json({ message: 'recatcha verification score failed', score: res.data?.score });
+                console.log("fail: gResp?.data?.score:", gResp?.data?.score);
+                return res.status(400).json({ message: 'recatcha verification score failed', score: gResp?.data?.score });
             }
 
         } catch (error) {
