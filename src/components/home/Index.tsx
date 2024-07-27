@@ -1,9 +1,10 @@
-import React from 'react'
 import Hero from './hero'
-import SkillsHero from '../skills/hero'
-import ProjectsComponent from '../projects'
-import ExperiencesComponent from '../experiences'
-import ContactComponent from '../contact'
+import dynamic from 'next/dynamic'
+const SkillsHero = dynamic(() => import('../skills/hero'))
+const ProjectsComponent = dynamic(() => import('../projects'))
+const ExperiencesComponent = dynamic(() => import('../experiences'))
+const ContactComponent = dynamic(() => import('../contact'))
+const TwitterComponent = dynamic(() => import('../twitter'))
 
 const HomeComponent = () => {
     return (
@@ -12,6 +13,7 @@ const HomeComponent = () => {
             <SkillsHero />
             <ProjectsComponent />
             <ExperiencesComponent />
+            <TwitterComponent />
             <ContactComponent />
         </div>
     )
