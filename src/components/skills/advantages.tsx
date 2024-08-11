@@ -9,6 +9,7 @@ import { CgWebsite } from "react-icons/cg";
 import { SiGoogleanalytics } from "react-icons/si";
 import { MdSupport } from "react-icons/md";
 import TagWord from '../common/tagWord';
+import FadeInWithEase from '../common/easeInOut';
 
 const carouselItems = [
     {
@@ -73,36 +74,38 @@ const Advantages = () => {
             <div className="py-10">
                 <TagWord text='Strengths' />
             </div>
-            <Carousel
-                ssr={true}
-                infinite
-                autoPlay={true}
-                autoPlaySpeed={10000}
-                transitionDuration={3000}
-                swipeable={true}
-                draggable={true}
-                pauseOnHover={true}
-                arrows={false}
-                showDots={false}
-                containerClass="carousel-container"
-                responsive={responsive}
-                removeArrowOnDeviceType={["tablet", "mobile"]}
-                dotListClass="mt-[80px]"
-            >
-                {carouselItems.map((item, idx) => (
-                    <div className='min-w-[20rem] cursor-grab text-white max-w-[28rem] p-4 border-2 text-center min-h-[17rem] border-white' key={idx}>
-                        <div className="w-full first-line: text-3xl py-3 mx-auto flex justify-center text-center">
-                            <item.icon />
+            <FadeInWithEase>
+                <Carousel
+                    ssr={true}
+                    infinite
+                    autoPlay={true}
+                    autoPlaySpeed={10000}
+                    transitionDuration={3000}
+                    swipeable={true}
+                    draggable={true}
+                    pauseOnHover={true}
+                    arrows={false}
+                    showDots={false}
+                    containerClass="carousel-container"
+                    responsive={responsive}
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    dotListClass="mt-[80px]"
+                >
+                    {carouselItems.map((item, idx) => (
+                        <div className='min-w-[20rem] cursor-grab text-white max-w-[28rem] p-4 border-2 text-center min-h-[17rem] border-white' key={idx}>
+                            <div className="w-full first-line: text-3xl py-3 mx-auto flex justify-center text-center">
+                                <item.icon />
+                            </div>
+                            <h3 className="text-center text-white tracking-wider text-xl py-3 font-bold">
+                                {item?.title}
+                            </h3>
+                            <p className="text-center text-white tracking-wider text-lg py-3">
+                                {item?.content}
+                            </p>
                         </div>
-                        <h3 className="text-center text-white tracking-wider text-xl py-3 font-bold">
-                            {item?.title}
-                        </h3>
-                        <p className="text-center text-white tracking-wider text-lg py-3">
-                            {item?.content}
-                        </p>
-                    </div>
-                ))}
-            </Carousel>
+                    ))}
+                </Carousel>
+            </FadeInWithEase>
         </div>
     )
 }

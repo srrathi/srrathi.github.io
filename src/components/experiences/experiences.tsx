@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaLocationDot } from "react-icons/fa6";
 import { PiBuildingOfficeFill } from "react-icons/pi";
 import TagWord from '../common/tagWord';
+import SlideInDirection from '../common/SlideInDirection';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -156,7 +157,7 @@ const Experiences = () => {
                     {
                         timelineData?.map((data, idx) => (
                             <div key={idx} className={`mb-8 flex justify-between ${idx % 2 !== 0 ? 'md:flex-row-reverse lg:flex-row-reverse' : ''} items-center w-full right-timeline`}>
-                                <div className={`order-1 hidden md:flex items-center lg:flex justify-between w-5/12 py-4`}>
+                                <SlideInDirection right={idx % 2 !== 0} className={`order-1 hidden md:flex items-center lg:flex justify-between w-5/12 py-4`}>
                                     <hr className='w-full hidden md:block lg:block' />
                                     <h3 className={`tracking-wider hover:bg-white hover:text-black transition ease-in-out delay-150 flex items-center gap-2 italic border-[1px] w-fit px-6 border-white text-xl py-3 font-bold`}>
                                         <div className='min-w-5'>
@@ -168,13 +169,13 @@ const Experiences = () => {
                                     <div className={`relative object-contain min-w-40 min-h-40 w-40 h-40 ${idx % 2 === 0 ? 'order-first' : ''}`}>
                                         <img src={data?.logo} alt={data?.company} loading='lazy' className="object-contain w-full h-full" />
                                     </div>
-                                </div>
+                                </SlideInDirection>
                                 <div className="z-20 flex items-center justify-center order-1 w-2/12">
                                     <hr className='w-full hidden md:block lg:block' />
                                     <div className='bg-white min-w-3 min-h-3 w-3 h-3 rounded-full'></div>
                                     <hr className='w-full' />
                                 </div>
-                                <div className="order-1 text-white border-[1px] border-white w-10/12 md:w-5/12 lg:w-5/12 px-6 py-4">
+                                <SlideInDirection right={idx % 2 === 0} className="order-1 text-white border-[1px] border-white w-10/12 md:w-5/12 lg:w-5/12 px-6 py-4">
                                     <div className="block md:flex lg:flex w-full border-b-2 border-white justify-between items-center">
                                         <h3 className="tracking-wider text-lg md:text-xl lg:text-xl py-3 font-bold">
                                             {data?.position}
@@ -199,7 +200,7 @@ const Experiences = () => {
                                             {data?.location}
                                         </p>
                                     </div>
-                                </div>
+                                </SlideInDirection>
                             </div>
                         ))
                     }

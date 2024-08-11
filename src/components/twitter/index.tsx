@@ -1,6 +1,7 @@
 "use client";
 import { Timeline } from "react-twitter-widgets";
 import TagWord from "../common/tagWord";
+import FadeInWithEase from "../common/easeInOut";
 
 const TwitterComponent = () => {
     return (
@@ -9,10 +10,12 @@ const TwitterComponent = () => {
                 <div className="py-0 md:py-10 lg:py-10">
                     <TagWord text='Follow on X' />
                 </div>
-                <Timeline
-                    dataSource={{ sourceType: "profile", screenName: "SitaramRathi5" }}
-                    options={{ theme: "dark", height: "600", dnt: true }}
-                />
+                <FadeInWithEase>
+                    <Timeline
+                        dataSource={{ sourceType: "profile", screenName: "SitaramRathi5" }}
+                        options={{ theme: "dark", height: "600", dnt: true }}
+                    />
+                </FadeInWithEase>
             </div>
         </section>
     )

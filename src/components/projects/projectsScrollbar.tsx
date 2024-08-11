@@ -2,6 +2,7 @@ import React from 'react'
 import TagWord from '../common/tagWord'
 import CardsScrollbar from '../common/cardsScrollbar';
 import projectsData from './data.json'
+import FadeInWithEase from '../common/easeInOut';
 
 
 const ProjectsScrollbar = () => {
@@ -12,7 +13,9 @@ const ProjectsScrollbar = () => {
                     <TagWord text='Projects' />
                 </div>
 
-                <CardsScrollbar data={projectsData} />
+                <FadeInWithEase>
+                    <CardsScrollbar data={projectsData} />
+                </FadeInWithEase>
             </div>
         </div>
     )

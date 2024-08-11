@@ -4,6 +4,7 @@ import Heading from '../common/heading'
 import ListElements from '../common/listElements'
 import Technologies from './technologies'
 import Advantages from './advantages'
+import SlideInFromLeft from '../common/slideInFromLeft'
 
 const items = [
     <p key={1}>Backend Development</p>,
@@ -23,10 +24,12 @@ const SkillsHero = () => {
                 <div className="mt-0 md:mt-5 lg:mt-5">
                     <div className="grid grid-cols-12 gap-2 md:gap-10 lg:gap-10 my-auto items-center">
                         <div className="col-span-12 md:col-span-7 lg:col-span-7">
-                            <Heading text='Skills I posses as a Specialist' />
-                            <ListElements
-                                items={items}
-                            />
+                            <SlideInFromLeft>
+                                <Heading text='Skills I posses as a Specialist' />
+                                <ListElements
+                                    items={items}
+                                />
+                            </SlideInFromLeft>
                         </div>
                         <Technologies />
                     </div>
