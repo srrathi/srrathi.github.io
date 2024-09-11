@@ -24,33 +24,20 @@ const handler = async (req: any, res: any) => {
     // res.headers.set('X-XSS-Protection', '1; mode=block');
 
     if (req.method === 'POST') {
-        // Apply rate limiting
         if (!limiter(req)) {
-            // return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
             return res.status(429).json({ message: 'Too many requests, please try again later.' });
         }
 
         try {
-            // Parse the request body
-            // const body = await req.json();
             const body = req.body;
             const secretKey = process?.env?.RECAPTCHA_SECRET_KEY;
 
-            // Validate the request body
             await contactSchema.validate(body, { abortEarly: false });
 
-            // Destructure the request body
             const { name, email, message, gReCaptchaToken } = body;
 
-            // Process the contact form submission (e.g., send an email)
-            // Placeholder logic for processing the data
             const formData = `secret=${secretKey}&response=${gReCaptchaToken}`;
-            // const resp = await insertContact({ name, email, message, timestamp });
-            // if (resp) {
-            //     // Send a success response
-            //     console.log(resp);
-            //     return NextResponse.json({ message: 'Contact form submitted successfully' });
-            // }
+
             let gResp;
             try {
                 gResp = await axios.post(
@@ -69,12 +56,9 @@ const handler = async (req: any, res: any) => {
                 const sendEmailTo = [process.env.PERSONAL_EMAIL, email].join(',');
                 const resp = await sendEmail(sendEmailTo, emailSubject, message, generateEmailHTML(name, email, message));
                 if (resp) {
-                    // Send a success response
-                    // return NextResponse.json({ message: 'Contact form submitted successfully' });
                     return res.status(200).json({ message: 'Contact form submitted successfully' });
                 }
 
-                // return NextResponse.json({ message: 'Failed to submit contact form' }, { status: 500 });
                 return res.status(500).json({ message: 'Failed to submit contact form' });
             } else {
                 console.log("fail: gResp?.data?.score:", gResp?.data?.score);
@@ -82,12 +66,9 @@ const handler = async (req: any, res: any) => {
             }
 
         } catch (error) {
-            // Handle validation errors
             if (error instanceof Error) {
-                // return NextResponse.json({ message: error.message }, { status: 400 });
                 return res.status(400).json({ message: error.message });
             }
-            // return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
             return res.status(500).json({ message: 'Internal server error' });
         }
     } else {
@@ -96,10 +77,5 @@ const handler = async (req: any, res: any) => {
     }
 };
 
-// // Export the API route with Edge runtime
-// export const config = {
-//     runtime: 'edge',
-// };
 
-// Export the API route
 export default handler;
