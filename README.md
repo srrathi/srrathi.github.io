@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website
 
-## Getting Started
+This is my personal portfolio website built using **Next.js** and **Tailwind CSS**, showcasing my work, skills, and projects. This is a minimalistic dark background lovers' portfolio designed specifically for software developers. The website is hosted on **Vercel** and is open-source, available for anyone to use or contribute.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Built with [Next.js](https://nextjs.org/) for fast and optimized performance.
+- Styled using [Tailwind CSS](https://tailwindcss.com/) for a modern, responsive design.
+- Hosted on [Vercel](https://vercel.com/) for seamless deployment and scalability.
+- Free and open-source, licensed under the [GPL License](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   git clone https://github.com/srrathi.github.io
+   cd srrathi.github.io
+   ```
+2. Install dependencies:
 
-## Learn More
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```
+    npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open `http://localhost:3000` in your browser to see the website in action.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
+Feel free to submit pull requests or create issues for any improvements or bugs you find.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](./LICENSE) file for details.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
+[![srrathi github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/srrathi)
+[![Sitaram Rathi Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sitaram-rathi-519152197/)
+[![Sitaram Rathi email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:srrathi2000@gmail.com)
+[![Sitaram Rathi twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/SitaramRathi5)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
