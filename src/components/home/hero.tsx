@@ -30,7 +30,7 @@ const Hero = () => {
                                                     <li className="content__container__list__item">Software&nbsp;Developer</li>
                                                     <li className="content__container__list__item">Fullstack&nbsp;Developer</li>
                                                     <li className="content__container__list__item">Backend&nbsp;Developer</li>
-                                                    <li className="content__container__list__item">Database&nbsp;Developer</li>
+                                                    <li className="content__container__list__item">Opensource&nbsp;Developer</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -48,7 +48,7 @@ const Hero = () => {
                                                 <p key={1}>Software&nbsp;Developer</p>,
                                                 <p key={2}>Fullstack&nbsp;Developer</p>,
                                                 <p key={3}>Backend&nbsp;Developer</p>,
-                                                <p key={4}>Database&nbsp;Developer</p>,
+                                                <p key={4}>Opensource&nbsp;Developer</p>,
                                                 <p key={5}>Web&nbsp;Developer</p>,
                                             ]} interval={3000} />
                                             <p className='pt-2'>from Bengaluru, India.</p>
