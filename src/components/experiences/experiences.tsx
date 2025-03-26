@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaLocationDot } from "react-icons/fa6";
@@ -10,18 +10,55 @@ import SlideInDirection from '../common/SlideInDirection';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const WORD_LIMIT = 100; // Default word limit for the description
+
+
+const truncateText = (text: string, wordLimit: number) => {
+    const words = text.split(' ');
+    if (words.length > wordLimit) {
+        return words.slice(0, wordLimit).join(' ') + '...';
+    }
+    return text;
+};
+
+
 const timelineData = [
     {
         start: "Feb 2024",
         end: "Present",
         company: `<p>Kirana Club</p>`,
-        position: "SDE Intern",
+        position: "Software Development Engineer",
         location: "Bengaluru, Karnataka",
         logo: '/assets/images/logos/kc-logo.png',
-        description: `<p>◦ <b>Robust Website in Nextjs:</b> Developed Kirana Club new website in Nextjs with more than 30 pages from scratch, utilizing TypeScript and Tailwind CSS for SSR, achieving SEO optimization with 15k+ monthly visits.</p><br/>
-        <p>◦ <b>Backend for Status Maker:</b> Enhanced Kirana Club app with ”Status Maker” feature, managing posters and categories via internal tool, integrating Cloud Functions, caching on redis and Golang CRON jobs for efficient scheduling of posters and categories visibilities to show in app.</p><br/>
-        <p>◦ <b>Highly Scalable Services in Golang:</b> Engineered high-performance Golang service which connects with MySQL and Firebase for data queries, achieving 23ms minimum response time, load testing it and handling 25k+ daily invocations.</p><br/>
-        <p>◦ <b>Integration in App Webviews:</b> Integrated many features including UPI verification and submission in webviews.</p>
+        description: `
+            <p>◦ <b>Marketplace Expansion & Revenue Growth:</b> Developed high-performance Golang and Node.js APIs to launch the marketplace on the React Native app, increasing GTV by 3.5x in 2 months.</p><br/>
+            
+            <p>◦ <b>Backend for B2B Dashboard:</b> Designed and deployed the first version of the B2B Dashboard using Next.js with Docker, adding advanced payment records, role-based access control, and multi-level filtering for partner brands.</p><br/>
+            
+            <p>◦ <b>Third-Party API & OMS Integrations:</b> Integrated Easyecom, Unicommerce, Delhivery, Shiprocket, Icarry, Exotel (IVR), and Zoho (IGM) to automate order processing and vendor management.</p><br/>
+            
+            <p>◦ <b>Push Notification RCA & Crash Fixes:</b> Identified and fixed critical app crashes using Sentry, Crashlytics, and Mixpanel. Applied backend hotfixes to reduce production crashes by resolving issues in missing metadata during push notifications.</p><br/>
+            
+            <p>◦ <b>Optimized Product Search with Fuzzy Matching:</b> Developed high-performance fuzzy search services in Golang using Levenshtein distance, enhancing product discovery and user experience.</p><br/>
+            
+            <p>◦ <b>Singleton-Based High-Performance Services:</b> Implemented a singleton-based service architecture for core business logic, reducing code duplication and improving backend performance.</p><br/>
+            
+            <p>◦ <b>Brand Dashboard for FMCG Partners:</b> Built an interactive React + Golang Brand Dashboard for FMCG brands to post content, track retailer engagement, and configure dynamic content visibility.</p><br/>
+            
+            <p>◦ <b>Modular Cloud Function Optimization:</b> Developed an internal npm package to refactor duplicate widget-resolving logic, improving cloud function efficiency and maintainability.</p><br/>
+            
+            <p>◦ <b>Vendor Enablement & Marketplace Expansion:</b> Onboarded 9+ FMCG brands (Zoff Foods, Go Desi, Panchvate Herbals, Hugs by Schellz, Mothers Kitchen, Apsara Tea, Mangalam, Nutraj, Lots Wholesale) by managing OMS integrations, product listings, discounts, and pincode-based serviceability.</p><br/>
+            
+            <p>◦ <b>Robust Website Development:</b> Developed Kirana Club’s new website using Next.js, TypeScript, and Tailwind CSS, improving SEO and reaching 15k+ monthly visits.</p><br/>
+            
+            <p>◦ <b>Backend for Status Maker:</b> Built and managed the Status Maker feature using Golang, Redis, and CRON jobs to schedule and display promotional posters in the app. Developed APIs for poster visibility management via internal tools.</p><br/>
+            
+            <p>◦ <b>High-Performance Golang Services:</b> Engineered scalable Golang services connected to MySQL and Firebase, achieving a 23ms minimum response time and handling 25k+ daily invocations.</p><br/>
+            
+            <p>◦ <b>UPI Verification & App Webviews Integration:</b> Integrated UPI verification and submission within app webviews, enabling seamless payment processing and secure transactions.</p><br/>
+            
+            <p>◦ <b>Production Stability & RCA:</b> Conducted thorough Root Cause Analysis (RCA) for backend failures and API performance issues, ensuring high system reliability across millions of daily users.</p><br/>
+
         `
     },
     {
@@ -120,6 +157,7 @@ const timelineData = [
 const Experiences = () => {
     const lineRef = useRef(null);
     const lineWrapperRef = useRef(null);
+    const [expanded, setExpanded] = useState<boolean[]>(Array(timelineData.length).fill(false));
 
     useEffect(() => {
         if (lineRef.current && lineWrapperRef.current) {
@@ -144,6 +182,14 @@ const Experiences = () => {
             });
         }
     }, [lineRef, lineWrapperRef]);
+
+    const toggleReadMore = (index: number) => {
+        setExpanded(prevState => {
+            const newState = [...prevState];
+            newState[index] = !newState[index];
+            return newState;
+        });
+    };
 
     return (
         <section className="section py-14 md:py-20 lg:py-20 relative">
@@ -190,10 +236,16 @@ const Experiences = () => {
                                         <div dangerouslySetInnerHTML={{ __html: data?.company }} className="font-bold underline"></div>
                                     </div>
 
-                                    <div dangerouslySetInnerHTML={{ __html: data?.description }} className="tracking-wider text-md md:text-lg lg:text-lg pt-4 pb-3">
-
-                                    </div>
-
+                                    <div dangerouslySetInnerHTML={{ __html: expanded[idx]
+                                                ? data?.description
+                                                : truncateText(data?.description, WORD_LIMIT) }} 
+                                        className="tracking-wider text-md md:text-lg lg:text-lg pt-4 pb-3"></div>
+                                        <button
+                                            onClick={() => toggleReadMore(idx)}
+                                            className="text-white font-bold underline mt-2"
+                                        >
+                                            {expanded[idx] ? 'Read Less' : 'Read More'}
+                                        </button>
                                     <div className="text-md justify-start md:justify-end lg:justify-end items-center flex gap-2 pb-3">
                                         <FaLocationDot />
                                         <p>

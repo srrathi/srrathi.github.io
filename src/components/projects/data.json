@@ -1,5 +1,22 @@
 [
     {
+        "heading": "Rentify Property Management",
+        "subHeading": "Backend Server",
+        "description": "The Rentify Server is a backend application designed to manage users, properties, and interactions for a real estate platform. It provides APIs for user authentication, property management, and user interactions such as showing interest or liking properties.",
+        "items": [
+            "Node.js",
+            "Express",
+            "Sqlite",
+            "JWT",
+            "Sequelize",
+            "Swagger"
+        ],
+        "github": "https://github.com/srrathi/Rentify",
+        "live": "https://rentify-9h9k.onrender.com/api-docs/",
+        "img": "https://i.ibb.co/bgjJWr1q/Screenshot-from-2025-03-26-23-24-54.png",
+        "bgImg": "bg-[url(https://i.ibb.co/bgjJWr1q/Screenshot-from-2025-03-26-23-24-54.png)]"
+    },
+    {
         "heading": "IMRATHI BLOG",
         "subHeading": "Fullstack Web App",
         "description": "Developed a bespoke blog application from the ground up, integrating user authentication and authorization using JWT tokens. Added role-based, allowing users to create, edit, and delete posts based on their assigned roles. Incorporated a rich text editor to facilitate formatting of blog content. Enabled features such as liking, commenting, and editing posts, fostering user engagement and interaction.",
